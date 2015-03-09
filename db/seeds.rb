@@ -9,6 +9,11 @@
 
 #   Category(id: integer, name: string, created_at: datetime, updated_at: datetime)
 
+User.create([
+  { name: "John Doe", email: "john@doe.com", password: "password" },
+  { name: "Jane Doe", email: "jane@doe.com", password: "password" }
+])
+
 Category.create([
   { name: 'TV Comedies' },
   { name: 'TV Dramas' }
