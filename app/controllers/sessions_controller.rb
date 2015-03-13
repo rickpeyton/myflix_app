@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to home_path
     else
       flash[:danger] = "That combination is incorrect."
-      render :new
+      redirect_to sign_in_path
     end
   end
 
