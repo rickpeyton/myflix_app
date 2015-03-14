@@ -14,14 +14,32 @@
           %a.btn.btn-primary(href="") Watch Now
           %a.btn.btn-default(href="") + My Queue
 %section.reviews.container
-  %header
-    %h3 User Reviews (#{@reviews.count})
-  %ul
-    - @reviews.each do |review|
-      %article.review
-        %li.row
-          .col-sm-2
-            %span Rating: #{review.rating} / 5
-            %p by <a href="">#{review.user.name}</a>
-          .col-sm-8
-            %p= review.description
+  .row
+    .col-sm-10.col-sm-offset-1
+      = form_for [@video, @review] do |f|
+        %fieldset
+          .form-group
+            = f.label :rating, "Rate this video"
+            /%label Rate this video
+            .row
+              .col-sm-3
+                = f.select :rating, options_for_select([5,4,3,2,1].map { |num| [pluralize(num, "Star"), num] }), options = {}, html_options = { class: "form-control" }
+          .form-group
+            = f.label :description, "Write Review"
+            .row
+              .col-sm-8
+                = f.text_area :description, class: "form-control", rows: 6
+        %fieldset.form-group.actions.clearfix
+          = f.submit "Submit", class: "btn"
+          = link_to "Cancel", video_path(@video)
+      %header
+        %h3 User Reviews (#{@reviews.count})
+      %ul
+        - @reviews.each do |review|
+          %article.review
+            %li.row
+              .col-sm-2
+                %span Rating: #{review.rating} / 5
+                %p by <a href="">#{review.user.name}</a>
+              .col-sm-8
+                %p= review.description

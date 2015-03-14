@@ -14,6 +14,10 @@ describe VideosController do
         expect(assigns(:video)).to eq(@video)
       end
 
+      it "assigns a new review object" do
+        expect(assigns(:review)).to be_a_new(Review)
+      end
+
       it "assigns @reviews for @video" do
         review1 = Fabricate(:review, video: @video)
         review2 = Fabricate(:review, video: @video)
