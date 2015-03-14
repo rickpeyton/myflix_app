@@ -83,3 +83,13 @@ Review.create(
   video: Video.last,
   description: "I changed my mind. I am much less of a fan now.",
   rating: 2)
+
+QueueItem.create(
+  user: User.first,
+  video: Video.last,
+  position: 1)
+
+QueueItem.create(
+  user: User.first,
+  video: Video.offset(1).last,
+  position: 2)

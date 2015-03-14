@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Category do
 
   it { should have_many(:videos).order(created_at: :desc) }
+  it { should validate_presence_of(:name) }
 
   describe "#recent_videos" do
     it "returns vidoes descending by created_at" do
