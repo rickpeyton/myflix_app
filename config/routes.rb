@@ -5,6 +5,7 @@ Myflix::Application.routes.draw do
   get "/register", to: "users#new"
   resources :users, only: [:create]
   resources :videos, only: [:show] do
+    resources :reviews, only: [:create]
     collection do
       get '/search', to: 'videos#search'
     end
