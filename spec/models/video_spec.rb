@@ -3,10 +3,22 @@ require 'spec_helper'
 describe Video do
 
   it { should belong_to(:category) }
+  it { should have_many(:reviews) }
   it { should validate_presence_of(:title) }
   it { should validate_presence_of(:description) }
 
-  describe "search_by_title" do
+  describe "#average_rating" do
+    it "returns the average review for a given video rounded to 1
+        decimal place" do
+      video = Fabricate(:video)
+      Fabricate(:review, rating: 4, video: video)
+      Fabricate(:review, rating: 2, video: video)
+      Fabricate(:review, rating: 2, video: video)
+      expect(video.average_rating).to eq(2.7)
+    end
+  end
+
+  describe "#search_by_title" do
     it "returns an empty array if there is no match" do
       walking_dead = Video.create(
         title: "The Walking Dead",

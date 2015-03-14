@@ -65,3 +65,21 @@ days_counter = 63
   days_counter -= 7
   counter += 1
 end
+
+Review.create(
+  user: User.first,
+  video: Video.last,
+  description: "I love this show!!",
+  rating: 5)
+
+Review.create(
+  user: User.last,
+  video: Video.last,
+  description: "I am not smart enough to watch this show!!",
+  rating: 1)
+
+Review.create(
+  user: User.first,
+  video: Video.last,
+  description: "I changed my mind. I am much less of a fan now.",
+  rating: 2)
