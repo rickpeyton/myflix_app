@@ -87,9 +87,17 @@ Review.create(
 QueueItem.create(
   user: User.first,
   video: Video.last,
-  position: 1)
+  position: 2)
 
 QueueItem.create(
   user: User.first,
   video: Video.offset(1).last,
-  position: 2)
+  position: 1)
+QueueItem.create(
+  user: User.first,
+  video: Video.where("title LIKE ?", "%heory%").first,
+  position: 4)
+QueueItem.create(
+  user: User.first,
+  video: Video.where("title LIKE ?", "%alking%").first,
+  position: 3)

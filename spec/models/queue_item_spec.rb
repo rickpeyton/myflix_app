@@ -4,6 +4,31 @@ describe QueueItem do
   it { should belong_to(:user) }
   it { should belong_to(:video) }
 
+  describe "#set_queue_position" do
+    context "there are other videos in the queue" do
+      it "returns the last position plus one for user1" do
+        user1 = Fabricate(:user)
+        user2 = Fabricate(:user)
+        video1 = Fabricate(:video)
+        video2 = Fabricate(:video)
+        Fabricate(:queue_item, position: 1, user: user1, video: video1)
+        Fabricate(:queue_item, position: 2, user: user1, video: video2)
+        Fabricate(:queue_item, position: 1, user: user2, video: video2)
+        queue_item4 = Fabricate(:queue_item, user: user2, video: video1)
+        expect(queue_item4.set_queue_position).to eq(2)
+      end
+    end
+
+    context "there are NOT other videos in the queue" do
+      it "returns 1" do
+        user1 = Fabricate(:user)
+        video1 = Fabricate(:video)
+        queue_item = Fabricate(:queue_item, user: user1, video: video1)
+        expect(queue_item.set_queue_position).to eq(1)
+      end
+    end
+  end
+
   describe "#video_title" do
     it "returns the video title of the queue item" do
       video = Fabricate(:video, title: "The Walking Dead")
