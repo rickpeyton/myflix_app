@@ -96,4 +96,46 @@ describe QueueItemsController do
        end
      end
   end
+
+  describe "DELETE #destroy" do
+    it "redirects to the users my_queue" do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+      queue_item = Fabricate(:queue_item)
+      delete :destroy, id: queue_item
+      expect(response).to redirect_to my_queue_path
+    end
+
+    it "removes the queue-item" do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+      queue_item = Fabricate(:queue_item, user: alice)
+      delete :destroy, id: queue_item
+      expect(QueueItem.all.count).to eq(0)
+    end
+
+    it "only removes queue-item owned by the user" do
+      alice = Fabricate(:user)
+      bob = Fabricate(:user)
+      session[:user_id] = alice.id
+      queue_item = Fabricate(:queue_item, user: bob)
+      delete :destroy, id: queue_item
+      expect(bob.queue_items.count).to eq(1)
+    end
+
+    it "reorders the items in the queue" do
+      alice = Fabricate(:user)
+      session[:user_id] = alice.id
+      item1 = Fabricate(:queue_item, user: alice, position: 1)
+      item2 = Fabricate(:queue_item, user: alice, position: 2)
+      delete :destroy, id: item1.id
+      expect(item2.reload.position).to eq(1)
+    end
+
+    it "redirects to the sign-in page for a non-authenticated user" do
+      delete :destroy, id: 1
+      expect(response).to redirect_to sign_in_path
+    end
+  end
+
 end

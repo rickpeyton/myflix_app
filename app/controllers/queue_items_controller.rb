@@ -1,21 +1,42 @@
 class QueueItemsController < ApplicationController
-  before_filter :require_user, only: [:index, :create]
+  before_filter :require_user, only: [:index, :create, :destroy]
   def index
     @queue_items = current_user.queue_items.order(:position)
   end
 
   def create
-    if QueueItem.where("video_id = ? AND user_id = ?",
-                       params[:video_id], params[:user_id]).exists?
-      existing = QueueItem.where("video_id = ? AND user_id = ?",
-                                 params[:video_id], params[:user_id]).first
-      flash[:danger] = "#{existing.video_title} is already number #{existing.position} your queue."
+    video = Video.find(params[:video_id])
+    if already_present_in_queue?(video)
+      flash[:danger] = "#{video.title} is already in your queue."
     else
-      queue_item = QueueItem.create(user_id: params[:user_id],
-                                    video_id: params[:video_id])
-      queue_item.update(position: queue_item.set_queue_position)
-      queue_item.save
+      create_queue_item(video)
     end
     redirect_to my_queue_path
   end
+
+  def destroy
+    queue_item = QueueItem.find(params[:id])
+    if current_user.queue_items.where("position > ?", queue_item.position).present?
+      current_user.queue_items.where("position > ?", queue_item.position).each do |item|
+        item.update(position: item.position -= 1)
+      end
+    end
+    queue_item.destroy if current_user == queue_item.user
+    redirect_to my_queue_path
+  end
+
+  private
+
+    def create_queue_item(video)
+      QueueItem.create(user: current_user, video: video,
+                       position: add_to_end_of_queue)
+    end
+
+    def already_present_in_queue?(video)
+      current_user.queue_items.find_by(video_id: video.id).present?
+    end
+
+    def add_to_end_of_queue
+      current_user.queue_items.count + 1
+    end
 end
