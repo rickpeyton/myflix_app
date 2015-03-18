@@ -3,30 +3,43 @@ require 'spec_helper'
 describe QueueItemsController do
   describe "GET #index" do
     context "authenticated user" do
-      it "sets @queue_items variable for the logged in user" do
+      it "sets @user variable for the logged in user" do
         user = Fabricate(:user, name: "John Doe")
         session[:user_id] = user.id
-        queue_item1 = Fabricate(:queue_item, user: user)
-        queue_item2 = Fabricate(:queue_item, user: user)
         get :index
-        expect(assigns(:queue_items)).to match_array([queue_item1, queue_item2])
-      end
-
-      it "returns @queue_items in ascending order by position" do
-        user = Fabricate(:user, name: "John Doe")
-        session[:user_id] = user.id
-        queue_item1 = Fabricate(:queue_item, position: 2, user: user)
-        queue_item2 = Fabricate(:queue_item, position: 1, user: user)
-        get :index
-        expect(assigns(:queue_items)).to eq([queue_item2, queue_item1])
+        expect(assigns(:user)).to eq(user)
       end
     end
+
     context "non-authenticated user" do
       it "redirects to the sign-in page if not logged in" do
         get :index
         expect(response).to redirect_to(sign_in_path)
       end
     end
+  end
+
+  describe "PATCH #update" do
+    it "redirects to my_queue" do
+      alice = Fabricate(:user, name: "Alice")
+      session[:user_id] = alice.id
+      put :update, id: alice.id
+      expect(response).to redirect_to(my_queue_path)
+    end
+
+    it "Updates the position of the queue items" do
+      alice = Fabricate(:user, name: "Alice")
+      session[:user_id] = alice.id
+      video1 = Fabricate(:video, title: "The Walking Dead")
+      video2 = Fabricate(:video, title: "Forever")
+      queue_item1 = Fabricate(:queue_item, user: alice, video: video1, position: 1)
+      queue_item2 = Fabricate(:queue_item, user: alice, video: video2, position: 2)
+      put :update, id: alice.id, user: {"queue_item"=>{"#{queue_item1.id}"=>{"position"=>"2"}, "#{queue_item2.id}"=>{"position"=>"1"}}}
+      expect(QueueItem.all.order(:position)).to eq([queue_item2, queue_item1])
+    end
+
+    it "validates that the position is an integer"
+    it "updates the position of all items if the first item is moved to last"
   end
 
   describe "POST #create" do

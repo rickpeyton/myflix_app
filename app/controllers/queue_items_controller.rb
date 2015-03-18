@@ -1,7 +1,7 @@
 class QueueItemsController < ApplicationController
-  before_filter :require_user, only: [:index, :create, :destroy]
+  before_filter :require_user, only: [:index, :create, :destroy, :update]
   def index
-    @queue_items = current_user.queue_items.order(:position)
+    @user = current_user
   end
 
   def create
@@ -10,6 +10,14 @@ class QueueItemsController < ApplicationController
       flash[:danger] = "#{video.title} is already in your queue."
     else
       create_queue_item(video)
+    end
+    redirect_to my_queue_path
+  end
+
+  def update
+    @queue_items = params[:user][:queue_item]
+    @queue_items.each do |key, value|
+      current_user.queue_items.find(key).update(position: value[:position])
     end
     redirect_to my_queue_path
   end
