@@ -1,7 +1,7 @@
 class QueueItemsController < ApplicationController
-  before_filter :require_user, only: [:index, :create, :destroy, :update]
+  before_filter :require_user, only: [:index, :create, :destroy, :update_my_queue]
   def index
-    @user = current_user
+    @queue_items = current_user.queue_items
   end
 
   def create
@@ -14,14 +14,6 @@ class QueueItemsController < ApplicationController
     redirect_to my_queue_path
   end
 
-  def update
-    @queue_items = params[:user][:queue_item]
-    @queue_items.each do |key, value|
-      current_user.queue_items.find(key).update(position: value[:position])
-    end
-    redirect_to my_queue_path
-  end
-
   def destroy
     queue_item = QueueItem.find(params[:id])
     if current_user.queue_items.where("position > ?", queue_item.position).present?
@@ -30,6 +22,14 @@ class QueueItemsController < ApplicationController
       end
     end
     queue_item.destroy if current_user == queue_item.user
+    redirect_to my_queue_path
+  end
+
+  def update_my_queue
+    @queue_items = params[:queue_items]
+    @queue_items.each do |queue_item|
+      QueueItem.find(queue_item[:id]).update(position: queue_item[:position])
+    end
     redirect_to my_queue_path
   end
 
