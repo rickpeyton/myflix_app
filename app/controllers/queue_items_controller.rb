@@ -26,9 +26,11 @@ class QueueItemsController < ApplicationController
   end
 
   def update_my_queue
-    @queue_items = params[:queue_items]
-    @queue_items.each do |queue_item|
-      QueueItem.find(queue_item[:id]).update(position: queue_item[:position])
+    begin
+      update_my_queue_items
+      update_my_queue_positions
+    rescue ActiveRecord::RecordInvalid
+      flash[:danger] = "An invalid queue position was entered."
     end
     redirect_to my_queue_path
   end
@@ -46,5 +48,19 @@ class QueueItemsController < ApplicationController
 
     def add_to_end_of_queue
       current_user.queue_items.count + 1
+    end
+
+    def update_my_queue_items
+      ActiveRecord::Base.transaction do
+        params[:queue_items].each do |queue_item|
+          QueueItem.find(queue_item[:id]).update!(position: queue_item[:position])
+        end
+      end
+    end
+
+    def update_my_queue_positions
+      current_user.queue_items.each_with_index do |item, index|
+        item.update(position: index + 1)
+      end
     end
 end

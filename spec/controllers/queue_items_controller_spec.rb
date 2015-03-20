@@ -149,9 +149,45 @@ describe QueueItemsController do
         expect(alice.queue_items).to eq([queue_item2, queue_item1])
       end
 
-      it "normalizes the position numbers"
+      it "normalizes the position numbers" do
+        alice = Fabricate(:user, name: "Alice")
+        session[:user_id] = alice.id
+        queue_item1 = Fabricate(:queue_item, user: alice, position: 1)
+        queue_item2 = Fabricate(:queue_item, user: alice, position: 2)
+        put :update_my_queue, id: alice.id, queue_items: [{id: "#{queue_item1.id}", position: "3"}, {id: "#{queue_item2.id}", position: "2"}]
+        expect(alice.queue_items.map(&:position)).to eq([1, 2])
+      end
     end
-    context "with invalid inputs"
+
+    context "with invalid inputs" do
+      it "redirects to my queue" do
+        alice = Fabricate(:user, name: "Alice")
+        session[:user_id] = alice.id
+        queue_item1 = Fabricate(:queue_item, user: alice, position: 1)
+        queue_item2 = Fabricate(:queue_item, user: alice, position: 2)
+        put :update_my_queue, id: alice.id, queue_items: [{id: "#{queue_item1.id}", position: "3"}, {id: "#{queue_item2.id}", position: "2.5"}]
+        expect(response).to redirect_to my_queue_path
+      end
+
+      it "sets the flash message" do
+        alice = Fabricate(:user, name: "Alice")
+        session[:user_id] = alice.id
+        queue_item1 = Fabricate(:queue_item, user: alice, position: 1)
+        queue_item2 = Fabricate(:queue_item, user: alice, position: 2)
+        put :update_my_queue, id: alice.id, queue_items: [{id: "#{queue_item1.id}", position: "3"}, {id: "#{queue_item2.id}", position: "2.5"}]
+        expect(flash[:danger]).not_to be_empty
+      end
+
+      it "does not change the order of the queue items" do
+        alice = Fabricate(:user, name: "Alice")
+        session[:user_id] = alice.id
+        queue_item1 = Fabricate(:queue_item, user: alice, position: 1)
+        queue_item2 = Fabricate(:queue_item, user: alice, position: 2)
+        put :update_my_queue, id: alice.id, queue_items: [{id: "#{queue_item1.id}", position: "3"}, {id: "#{queue_item2.id}", position: "2.5"}]
+        expect(queue_item1.reload.position).to eq(1)
+      end
+    end
+
     context "with unauthenticated users"
     context "with queue items that do not belong to the current user"
   end

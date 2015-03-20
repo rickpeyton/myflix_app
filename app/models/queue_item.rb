@@ -1,6 +1,7 @@
 class QueueItem < ActiveRecord::Base
   belongs_to :user
   belongs_to :video
+  validates_numericality_of :position, only_integer: true
 
   delegate :category, to: :video
   delegate :title, to: :video, prefix: :video
@@ -14,12 +15,4 @@ class QueueItem < ActiveRecord::Base
     category.name
   end
 
-  def set_queue_position
-    existing_positions = user.queue_items.where.not(position: nil)
-    if existing_positions.empty?
-      1
-    else
-      existing_positions.order(:position).last.position + 1
-    end
-  end
 end
