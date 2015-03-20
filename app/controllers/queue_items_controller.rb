@@ -16,12 +16,8 @@ class QueueItemsController < ApplicationController
 
   def destroy
     queue_item = QueueItem.find(params[:id])
-    if current_user.queue_items.where("position > ?", queue_item.position).present?
-      current_user.queue_items.where("position > ?", queue_item.position).each do |item|
-        item.update(position: item.position -= 1)
-      end
-    end
     queue_item.destroy if current_user == queue_item.user
+    update_my_queue_positions
     redirect_to my_queue_path
   end
 
@@ -53,7 +49,8 @@ class QueueItemsController < ApplicationController
     def update_my_queue_items
       ActiveRecord::Base.transaction do
         params[:queue_items].each do |queue_item|
-          QueueItem.find(queue_item[:id]).update!(position: queue_item[:position])
+          item = QueueItem.find(queue_item[:id])
+          item.update!(position: queue_item[:position]) if current_user == item.user
         end
       end
     end
