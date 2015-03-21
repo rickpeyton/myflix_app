@@ -17,16 +17,16 @@ class QueueItemsController < ApplicationController
   def destroy
     queue_item = QueueItem.find(params[:id])
     queue_item.destroy if current_user == queue_item.user
-    update_my_queue_positions
+    current_user.update_my_queue_positions
     redirect_to my_queue_path
   end
 
   def update_my_queue
     begin
       update_my_queue_items
-      update_my_queue_positions
+      current_user.update_my_queue_positions
     rescue ActiveRecord::RecordInvalid
-      flash[:danger] = "An invalid queue position was entered."
+      flash[:danger] = "You can not do that."
     end
     redirect_to my_queue_path
   end
@@ -50,14 +50,8 @@ class QueueItemsController < ApplicationController
       ActiveRecord::Base.transaction do
         params[:queue_items].each do |queue_item|
           item = QueueItem.find(queue_item[:id])
-          item.update!(position: queue_item[:position]) if current_user == item.user
+          item.update!(position: queue_item[:position], rating: queue_item[:rating]) if current_user == item.user
         end
-      end
-    end
-
-    def update_my_queue_positions
-      current_user.queue_items.each_with_index do |item, index|
-        item.update(position: index + 1)
       end
     end
 end

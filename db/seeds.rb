@@ -73,11 +73,13 @@ Video.all.each do |video|
     video: video,
     description: Faker::Hacker.say_something_smart,
     rating: rand(1..5))
-  Review.create(
-    user: User.last,
-    video: video,
-    description: Faker::Hacker.say_something_smart,
-    rating: rand(1..5))
+  unless video == Video.last || video == Video.offset(1).last
+    Review.create(
+      user: User.last,
+      video: video,
+      description: Faker::Hacker.say_something_smart,
+      rating: rand(1..5))
+  end
 end
 
 QueueItem.create(
@@ -96,4 +98,22 @@ QueueItem.create(
 QueueItem.create(
   user: User.first,
   video: Video.where("title LIKE ?", "%alking%").first,
+  position: 3)
+
+QueueItem.create(
+  user: User.last,
+  video: Video.last,
+  position: 4)
+
+QueueItem.create(
+  user: User.last,
+  video: Video.offset(1).last,
+  position: 1)
+QueueItem.create(
+  user: User.last,
+  video: Video.all.sample,
+  position: 2)
+QueueItem.create(
+  user: User.last,
+  video: Video.all.sample,
   position: 3)

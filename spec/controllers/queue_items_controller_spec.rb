@@ -145,7 +145,9 @@ describe QueueItemsController do
         session[:user_id] = alice.id
         queue_item1 = Fabricate(:queue_item, user: alice, position: 1)
         queue_item2 = Fabricate(:queue_item, user: alice, position: 2)
-        put :update_my_queue, id: alice.id, queue_items: [{id: "#{queue_item1.id}", position: "2"}, {id: "#{queue_item2.id}", position: "1"}]
+        put :update_my_queue, id: alice.id, queue_items: [
+          {id: "#{queue_item1.id}", position: "2"},
+          {id: "#{queue_item2.id}", position: "1"}]
         expect(alice.queue_items).to eq([queue_item2, queue_item1])
       end
 
@@ -207,6 +209,34 @@ describe QueueItemsController do
         put :update_my_queue, queue_items: [{id: "#{queue_item1.id}", position: "3"}, {id: "#{queue_item2.id}", position: "2"}]
         expect(bob.queue_items).to eq([queue_item1, queue_item2])
       end
+    end
+
+    context "with video ratings" do
+      it "updates the rating for a video that already had a rating" do
+        alice = Fabricate(:user, name: "Alice")
+        session[:user_id] = alice.id
+        video = Fabricate(:video)
+        Fabricate(:review, rating: 3, user: alice, video: video)
+        queue_item1 = Fabricate(:queue_item, user: alice, video: video, position: 1)
+        put :update_my_queue, queue_items: [{
+          id: "#{queue_item1.id}",
+          position: "#{queue_item1.id}",
+          rating: "5"}]
+        expect(User.first.reviews.first.rating).to eq(5)
+      end
+
+      it "adds a rating for a video that does not already have a rating" do
+        alice = Fabricate(:user, name: "Alice")
+        session[:user_id] = alice.id
+        video = Fabricate(:video)
+        queue_item = Fabricate(:queue_item, user: alice, video: video, position: 1)
+        put :update_my_queue, queue_items: [{
+          id: "#{queue_item.id}",
+          position: "#{queue_item.position}",
+          rating: "5"}]
+        expect(User.first.reviews.first.rating).to eq(5)
+      end
+
     end
   end
 

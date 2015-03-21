@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_presence_of :password, on: :create
   validates_length_of :password, minimum: 8
+
+  def update_my_queue_positions
+    self.queue_items.each_with_index do |item, index|
+      item.update(position: index + 1)
+    end
+  end
 end
