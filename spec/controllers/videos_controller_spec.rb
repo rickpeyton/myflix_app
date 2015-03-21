@@ -5,7 +5,7 @@ describe VideosController do
   describe "GET #show/:id" do
     context "an authenticated user" do
       before do
-        session[:user_id] = Fabricate(:user)
+        set_current_user
         @video = Fabricate(:video)
         get :show, id: @video.id
       end
@@ -25,26 +25,22 @@ describe VideosController do
       end
     end
 
-    it "redirects to the sign in page if not authenticated" do
-      video = Fabricate(:video)
-      get :show, id: video.id
-      expect(response).to redirect_to sign_in_path
+    it_behaves_like "redirect_to_sign_in" do
+      let(:action) { get :show, id: Fabricate(:video).id }
     end
 
   end
 
   describe "GET #search" do
     it "returns videos for an authenticated user" do
-      session[:user_id] = Fabricate(:user)
+      set_current_user
       video = Fabricate(:video, title: "The Walking Dead")
       get :search, search_terms: "alking D"
       expect(assigns(:videos)).to match_array([video])
     end
 
-    it "redirects to sign in page if not authenticated" do
-      video = Fabricate(:video, title: "The Walking Dead")
-      get :search, search_terms: "alking D"
-      expect(response).to redirect_to sign_in_path
+    it_behaves_like "redirect_to_sign_in" do
+      let(:action) { get :search, search_terms: "alking D" }
     end
   end
 

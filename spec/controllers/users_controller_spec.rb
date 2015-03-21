@@ -4,7 +4,7 @@ describe UsersController do
 
   describe "GET #new" do
     it "redirects to home_path if user is already logged in" do
-      session[:user_id] = Fabricate(:user)
+      set_current_user
       get :new
       expect(response).to redirect_to home_path
     end

@@ -57,14 +57,11 @@ describe ReviewsController do
     end
 
     context "a non-authenticated user" do
-
-      it "redirects to the sign-in path" do
-          @walking = Fabricate(:video, title: "The Walking Dead")
-          post :create, review: Fabricate.attributes_for(:review),
-               video_id: @walking.id
-          expect(response).to redirect_to sign_in_path
+      it_behaves_like "redirect_to_sign_in" do
+        let(:action) { post :create,
+                       review: Fabricate(:review),
+                       video_id: Fabricate(:video) }
       end
-
     end
   end
 end
