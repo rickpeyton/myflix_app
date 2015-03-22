@@ -28,6 +28,10 @@ describe UsersController do
       it "redirects to the home_path" do
         expect(response).to redirect_to home_path
       end
+
+      it "sets the user into the session" do
+        expect(session[:user_id]).to eq(User.first.id)
+      end
     end
 
     context "with invalid input" do

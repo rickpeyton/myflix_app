@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "Your account has been created."
+      session[:user_id] = @user.id
       redirect_to home_path
     else
       flash[:danger] = "Something went wrong."
