@@ -2,6 +2,19 @@ require 'spec_helper'
 
 describe UsersController do
 
+  describe "GET #show" do
+    it_behaves_like "redirect_to_sign_in" do
+      let(:action) { get :show, id: 1 }
+    end
+
+    it "should set the user" do
+      set_current_user
+      alice = Fabricate(:user)
+      get :show, id: alice.id
+      expect(assigns(:user)).to eq(alice)
+    end
+  end
+
   describe "GET #new" do
     it "redirects to home_path if user is already logged in" do
       set_current_user
