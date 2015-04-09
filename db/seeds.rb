@@ -20,6 +20,11 @@ Category.create([
   { name: 'TV Dramas' }
 ])
 
+Relationship.create([
+  { leader: User.first, follower: User.last },
+  { leader: User.last, follower: User.first }
+])
+
 
 #   Video(id: integer, title: string, description: text,
 #         small_cover_url: string, large_cover_url: string,
