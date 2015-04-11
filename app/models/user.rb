@@ -17,4 +17,12 @@ class User < ActiveRecord::Base
       item.update(position: index + 1)
     end
   end
+
+  def follows?(another_user)
+    following_relationships.map(&:leader_id).include?(another_user.id)
+  end
+
+  def can_follow?(another_user)
+    !(self.follows?(another_user)) && self != another_user
+  end
 end

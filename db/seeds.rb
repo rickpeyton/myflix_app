@@ -12,6 +12,7 @@ require 'faker'
 
 User.create([
   { name: "John Doe", email: "john@doe.com", password: "password" },
+  { name: "Jake Doe", email: "jake@doe.com", password: "password" },
   { name: "Jane Doe", email: "jane@doe.com", password: "password" }
 ])
 

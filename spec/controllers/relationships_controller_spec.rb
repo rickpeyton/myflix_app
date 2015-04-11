@@ -16,6 +16,44 @@ describe RelationshipsController do
     end
   end
 
+  describe "POST #create" do
+    it_behaves_like "redirect_to_sign_in" do
+      let(:action) { delete :destroy, id: 1 }
+    end
+
+    it "redirects to the people path after adding a new leader for a valid user" do
+      alice = Fabricate(:user)
+      set_current_user(alice)
+      bob = Fabricate(:user)
+      post :create, leader: bob
+      expect(response).to redirect_to people_path
+    end
+
+    it "creates a new leader follower relationship when the follower is the current user" do
+      alice = Fabricate(:user)
+      set_current_user(alice)
+      bob = Fabricate(:user)
+      post :create, leader: bob
+      expect(Relationship.first.follower).to eq(alice)
+    end
+
+    it "does not create the relationship if the current user already follows the leader" do
+      alice = Fabricate(:user)
+      set_current_user(alice)
+      bob = Fabricate(:user)
+      Fabricate(:relationship, leader: bob, follower: alice)
+      post :create, leader: bob
+      expect(Relationship.all.count).to eq(1)
+    end
+
+    it "does not allow one to follow themselves" do
+      alice = Fabricate(:user)
+      set_current_user(alice)
+      post :create, leader: alice
+      expect(Relationship.all.count).to eq(0)
+    end
+  end
+
   describe "DELETE #destroy" do
     it_behaves_like "redirect_to_sign_in" do
       let(:action) { delete :destroy, id: 1 }

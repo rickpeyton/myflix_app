@@ -15,7 +15,7 @@ Myflix::Application.routes.draw do
     end
   end
   resources :categories, only: [:show]
-  resources :relationships, only: [:destroy]
+  resources :relationships, only: [:create, :destroy]
   get "/sign-in", to: "sessions#new"
   post "/sign-in", to: "sessions#create"
   get "/sign-out", to: "sessions#destroy"
