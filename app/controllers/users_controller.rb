@@ -15,6 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Your account has been created."
       session[:user_id] = @user.id
+      RegisterMailer.welcome_email(@user).deliver
       redirect_to home_path
     else
       flash[:danger] = "Something went wrong."
