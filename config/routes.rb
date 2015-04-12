@@ -19,4 +19,6 @@ Myflix::Application.routes.draw do
   get "/sign-in", to: "sessions#new"
   post "/sign-in", to: "sessions#create"
   get "/sign-out", to: "sessions#destroy"
+  get "/forgot-password", to: "passwords#new"
+  post "/forgot-password", to: "passwords#create"
 end
