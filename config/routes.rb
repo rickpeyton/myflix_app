@@ -20,5 +20,6 @@ Myflix::Application.routes.draw do
   post "/sign-in", to: "sessions#create"
   get "/sign-out", to: "sessions#destroy"
   get "/forgot-password", to: "passwords#new"
-  post "/forgot-password", to: "passwords#create"
+  get "/invalid-token", to: "passwords#invalid"
+  resources :passwords, only: [:show, :create, :update]
 end

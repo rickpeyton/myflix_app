@@ -7,7 +7,7 @@ class RegisterMailer < ActionMailer::Base
 
   def forgot_password_email(user)
     @user = user
-    @link = "http://rickflix.heroku.com/password_reset/#{@user.token}"
+    @link = "http://rickflix.heroku.com/reset-password/#{@user.token}"
     mail(from: "peytorb@gmail.com", to: @user.email, subject: "MyFlix! Password Reset Instructions")
   end
 end
