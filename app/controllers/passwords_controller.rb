@@ -19,7 +19,6 @@ class PasswordsController < ApplicationController
   def update
     @user = User.find_by(token: params[:id])
     if @user.update(password: params[:password], token: nil)
-      session[:user_id] = @user.id
       flash[:success] = "Your password has been updated. Please sign in."
       redirect_to sign_in_path
     else
