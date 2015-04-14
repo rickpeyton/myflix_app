@@ -22,4 +22,5 @@ Myflix::Application.routes.draw do
   get "/forgot-password", to: "passwords#new"
   get "/invalid-token", to: "passwords#invalid"
   resources :passwords, only: [:show, :create, :update]
+  get "/invite", to: "invitations#new"
 end
