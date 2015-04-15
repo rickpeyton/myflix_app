@@ -1,0 +1,8 @@
+!!!
+%html
+  %body
+    %h1 Hi, #{@invitation.friend_name}
+    %p Your friend, #{@user.name} has invited you to join MyFlix!
+    %p Follow this link to join your friend:
+    = link_to "Join MyFlix", register_url(token: @invitation.token)
+    %p Thanks and have a great day!
