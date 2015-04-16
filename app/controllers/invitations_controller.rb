@@ -12,6 +12,9 @@ class InvitationsController < ApplicationController
       InvitationMailer.invitation_email(@invitation).deliver
       flash[:success] = "An invitation has been sent to your friend!"
       redirect_to home_path
+    else
+      flash[:danger] = "An invitation could not be created."
+      render :new
     end
   end
 

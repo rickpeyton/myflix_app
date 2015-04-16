@@ -26,6 +26,18 @@ describe UsersController do
       get :new
       expect(assigns(:user)).to be_an_instance_of(User)
     end
+
+    it "sets the @token variable if a valid token parameter is present" do
+      alice = Fabricate(:user)
+      invite = Fabricate(:invitation, user_id: alice.id)
+      get :new, token: invite.token
+      expect(assigns(:token)).to eq(invite.token)
+    end
+
+    it "does not set the @token variable if a valid token is not found" do
+      get :new, token: "abc123"
+      expect(assigns(:token)).to be_nil
+    end
   end
 
   describe "POST #create" do
@@ -44,6 +56,15 @@ describe UsersController do
 
       it "sets the user into the session" do
         expect(session[:user_id]).to eq(User.first.id)
+      end
+    end
+
+    context "with a valid token" do
+      it "creates a relationship between invitee and invitor" do
+        alice = Fabricate(:user)
+        invite = Fabricate(:invitation, user_id: alice.id)
+        post :create, user: Fabricate.attributes_for(:user, friend_token: invite.token)
+        expect(Relationship.where(["leader_id = ? and follower_id = ?", alice.id, User.last.id]).count).to eq(1)
       end
     end
 
@@ -73,6 +94,10 @@ describe UsersController do
     end
 
     context "do not send email with invalid inputs" do
+      before do
+        ActionMailer::Base.deliveries.clear
+      end
+
       it "should not send an email" do
         post :create, user: Fabricate.attributes_for(:user, password: "pass")
         expect(ActionMailer::Base.deliveries).to be_empty

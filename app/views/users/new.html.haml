@@ -5,6 +5,7 @@
         %header
           %h1 Register
         %fieldset
+          = f.hidden_field "friend_token", value: @token if @token.present?
           = f.text_field :name
           = f.email_field :email
           = f.password_field :password
