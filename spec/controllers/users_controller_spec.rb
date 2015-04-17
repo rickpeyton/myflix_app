@@ -66,6 +66,14 @@ describe UsersController do
         post :create, user: Fabricate.attributes_for(:user, friend_token: invite.token)
         expect(Relationship.where(["leader_id = ? and follower_id = ?", alice.id, User.last.id]).count).to eq(1)
       end
+
+      it "creates a relationship between invitor and invitee" do
+        alice = Fabricate(:user)
+        invite = Fabricate(:invitation, user_id: alice.id)
+        post :create, user: Fabricate.attributes_for(:user, friend_token: invite.token)
+        expect(Relationship.where(["leader_id = ? and follower_id = ?", User.last.id, alice.id]).count).to eq(1)
+      end
+
     end
 
     context "email sending with valid inputs" do

@@ -37,5 +37,6 @@ class UsersController < ApplicationController
   def create_relationship
     leader = User.find(@invitation.user_id)
     Relationship.create(leader: leader, follower: @user)
+    Relationship.create(leader: @user, follower: leader)
   end
 end

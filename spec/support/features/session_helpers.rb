@@ -15,5 +15,9 @@ module Features
       fill_in 'Password', with: user.password
       click_button 'Sign in'
     end
+
+    def sign_out
+      visit sign_out_path
+    end
   end
 end
