@@ -1,0 +1,19 @@
+machine:
+  ruby:
+    version: 2.2.1
+deployment:
+  production:
+    branch: master
+    commands:
+      - heroku maintenance:on --app rickflix
+      - heroku pg:backups capture --app rickflix
+      - git push git@heroku.com:rickflix.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app rickflix
+      - heroku maintenance:off --app rickflix
+  staging:
+    branch: staging
+    commands:
+      - heroku maintenance:on --app rickflix-staging
+      - git push git@heroku.com:rickflix-staging.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app rickflix-staging
+      - heroku maintenance:off --app rickflix-staging
