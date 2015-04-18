@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.1'
 
+gem "unicorn"
 gem 'bootstrap-sass', '3.1.1.1'
 gem 'coffee-rails'
 gem 'rails', '4.1.1'
@@ -14,7 +15,6 @@ gem 'bootstrap_form'
 gem 'sidekiq'
 
 group :development do
-  gem 'thin'
   gem "better_errors"
   gem "binding_of_caller"
   gem "letter_opener"

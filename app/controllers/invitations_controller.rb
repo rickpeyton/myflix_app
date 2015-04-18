@@ -8,7 +8,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(invitation_params)
     if current_user.id == @invitation.user_id && @invitation.save
       @invitation.generate_token
-      InvitationMailer.invitation_email(@invitation).deliver
+      InvitationMailer.delay.invitation_email(@invitation)
       flash[:success] = "An invitation has been sent to your friend!"
       redirect_to home_path
     else
