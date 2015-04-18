@@ -36,7 +36,7 @@ group :test do
 end
 
 group :production do
-  gem "sentry-raven" #, :github => "getsentry/raven-ruby"
+  gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
   gem 'rails_12factor'
 end
 
