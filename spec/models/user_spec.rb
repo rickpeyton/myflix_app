@@ -24,5 +24,9 @@ describe User do
       expect(alice.follows?(bob)).to be_falsey
     end
   end
+
+  it_behaves_like "tokenable" do
+    let(:object) { Fabricate(:user) }
+  end
 end
 

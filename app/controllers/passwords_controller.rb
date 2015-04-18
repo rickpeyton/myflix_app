@@ -9,7 +9,7 @@ class PasswordsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
     if @user.present?
-      @user.update_attribute(:token, SecureRandom.urlsafe_base64)
+      @user.generate_token
       RegisterMailer.forgot_password_email(@user).deliver
     end
     flash[:success] = "Password reset instructions have been send to the specified email."

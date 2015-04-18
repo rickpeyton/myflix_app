@@ -5,3 +5,10 @@ shared_examples "redirect_to_sign_in" do
     expect(response).to redirect_to sign_in_path
   end
 end
+
+shared_examples "tokenable" do
+  it "adds a token attribute to the object" do
+    object.generate_token
+    expect(object.class.first.token).not_to be_nil
+  end
+end

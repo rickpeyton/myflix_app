@@ -69,6 +69,11 @@ describe InvitationsController do
         expect(Invitation.all.count).to eq(0)
       end
 
+      it "does not create the invitation with an invalid email address" do
+        post :create, invitation: { friend_name: bob.name, friend_email: "bob2example.com", message: Faker::Lorem.sentence, user_id: alice.id }
+        expect(Invitation.all.count).to eq(0)
+      end
+
       it "sets the danger message" do
         post :create, invitation: Fabricate.attributes_for(:invitation, user_id: bob.id)
         expect(flash[:danger]).not_to be_nil
