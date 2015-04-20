@@ -14,6 +14,9 @@ Myflix::Application.routes.draw do
       get '/search', to: 'videos#search'
     end
   end
+  namespace :admin do
+    resources :videos, only: [:new, :create]
+  end
   resources :categories, only: [:show]
   resources :relationships, only: [:create, :destroy]
   get "/sign-in", to: "sessions#new"
