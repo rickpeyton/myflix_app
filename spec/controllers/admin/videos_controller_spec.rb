@@ -8,15 +8,26 @@ describe Admin::VideosController do
       set_current_user(alice)
     end
 
-    it "sets a new video instance" do
-      alice.update_attribute(:admin, true)
-      get :new
-      expect(assigns(:video)).to be_an_instance_of(Video)
+    it_behaves_like "redirect_to_sign_in" do
+      let(:action) { get :new }
     end
 
-    it "should restrict access to admins only" do
+    it "sets a new video instance" do
+      session[:user_id] = nil
+      set_current_admin
       get :new
-      expect(response).to redirect_to sign_in_path
+      expect(assigns(:video)).to be_an_instance_of(Video)
+      expect(assigns(:video)).to be_new_record
+    end
+
+    it "redirects the regular user to the home path" do
+      get :new
+      expect(response).to redirect_to home_path
+    end
+
+    it "sets the flash danger message for the regular user" do
+      get :new
+      expect(flash[:danger]).not_to be_nil
     end
   end
 end
