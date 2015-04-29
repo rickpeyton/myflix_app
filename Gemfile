@@ -13,6 +13,7 @@ gem 'pg'
 gem 'bcrypt'
 gem 'bootstrap_form'
 gem 'sidekiq'
+gem 'carrierwave'
 
 group :development do
   gem "better_errors"
@@ -38,6 +39,5 @@ end
 group :production do
   gem "sentry-raven", :git => "https://github.com/getsentry/raven-ruby.git"
   gem 'rails_12factor'
-  gem 'carrierwave'
 end
 

@@ -5,6 +5,7 @@ class Admin::VideosController < AdminController
 
   def create
     @video = Video.new(video_params)
+    binding.pry
     if @video.save
       flash[:success] = "You successfully added #{@video.title}"
       redirect_to new_admin_video_path

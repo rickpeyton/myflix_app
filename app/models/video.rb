@@ -3,6 +3,9 @@ class Video < ActiveRecord::Base
   has_many :reviews, -> { order "created_at DESC" }
   validates_presence_of :title, :description
 
+  mount_uploader :large_cover, LargeCoverUploader
+  mount_uploader :small_cover, SmallCoverUploader
+
   def self.search_by_title(search_query)
     return [] if search_query.blank?
     where("title LIKE ?", "%#{search_query}%").order(created_at: :desc)
