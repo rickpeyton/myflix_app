@@ -37,8 +37,8 @@ days_counter = 10
   Video.create(
     title: "The Big Bang Theory E0#{counter}",
     description: "A woman who moves into an apartment across the hall from two brilliant but socially awkward physicists shows them how little they know about life outside of the laboratory.",
-    small_cover: 'bang_theory.jpg',
-    large_cover: 'bang_theory_large.jpg',
+    small_cover: File.open(File.join(Rails.root,'public/tmp/bang_theory.jpg')),
+    large_cover: File.open(File.join(Rails.root,'public/tmp/bang_theory_large.jpg')),
     category: Category.first,
     created_at: days_counter.days.ago)
   days_counter -= 1
@@ -51,8 +51,8 @@ days_counter = 70
   Video.create(
     title: "The Walking Dead E0#{counter}",
     description: "Rick Grimes is a former Sheriff's deputy who has been in a coma for several months after being shot while on duty. When he wakes, he discovers that the world has been taken over by zombies, and that he seems to be the only person still alive.",
-    small_cover: 'walking_dead.jpg',
-    large_cover: 'walking_dead_large.jpg',
+    small_cover: File.open(File.join(Rails.root,'public/tmp/walking_dead.jpg')),
+    large_cover: File.open(File.join(Rails.root,'public/tmp/walking_dead_large.jpg')),
     category: Category.last,
     created_at: days_counter.days.ago)
   days_counter -= 7
@@ -65,8 +65,8 @@ days_counter = 63
   Video.create(
     title: "Forever E0#{counter}",
     description: "A 200-year-old man works in the New York City Morgue trying to find a key to unlock the curse of his immortality.",
-    small_cover: 'forever.jpg',
-    large_cover: 'forever_large.jpg',
+    small_cover: File.open(File.join(Rails.root,'public/tmp/forever.jpg')),
+    large_cover: File.open(File.join(Rails.root,'public/tmp/forever_large.jpg')),
     category: Category.last,
     created_at: days_counter.days.ago)
   days_counter -= 7

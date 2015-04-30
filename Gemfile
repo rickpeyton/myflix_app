@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'bootstrap_form'
 gem 'sidekiq'
 gem 'carrierwave'
+gem "mini_magick"
 
 group :development do
   gem "better_errors"
