@@ -20,5 +20,6 @@
             %li
               %a(href="#") Account
               %a(href="#") Plan and Billing
+              = link_to "Add a new video", new_admin_video_path if admin?
               = link_to "Invite a friend", invite_path
               = link_to "Sign Out", sign_out_path
