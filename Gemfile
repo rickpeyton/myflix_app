@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'bootstrap_form'
 gem 'sidekiq'
 gem 'carrierwave'
+gem 'carrierwave-aws'
 gem "mini_magick"
 
 group :development do
