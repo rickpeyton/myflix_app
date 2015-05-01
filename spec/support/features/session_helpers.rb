@@ -16,6 +16,14 @@ module Features
       click_button 'Sign in'
     end
 
+    def admin_sign_in
+      admin = User.create(name: 'Jane Doe', email: 'jane@doe.com', password: 'password', admin: true)
+      visit sign_in_path
+      fill_in 'Email', with: admin.email
+      fill_in 'Password', with: admin.password
+      click_button 'Sign in'
+    end
+
     def sign_out
       visit sign_out_path
     end
