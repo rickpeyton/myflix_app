@@ -20,6 +20,15 @@ feature 'Admin logs in, adds a video then logs out. User logs in and watches vid
     click_button "Add Video"
 
     expect(page).to have_content("You successfully added The Walking Dead E10")
+
+    sign_out
+
+    sign_in
+    video_id = Video.last.id
+    click_link "video_#{video_id}"
+    expect(page).to have_selector("img[src='/uploads/walking_dead_large.jpg']")
+    expect(page).to have_content("The Walking Dead E10")
+    find_link("Watch Now").visible?
   end
 
   def create_categories
