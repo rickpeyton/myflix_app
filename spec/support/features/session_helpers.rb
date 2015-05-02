@@ -5,7 +5,7 @@ module Features
       fill_in 'Name', with: name
       fill_in 'Email', with: email
       fill_in 'Password', with: password
-      click_button 'Sign Up'
+      click_button('checkout_with_stripe')
     end
 
     def sign_in

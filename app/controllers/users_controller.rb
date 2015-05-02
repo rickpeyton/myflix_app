@@ -46,7 +46,7 @@ class UsersController < ApplicationController
     Stripe.api_key = ENV['STRIPE_TEST_SECRET']
 
     begin
-      charge = Stripe::Charge.create(
+      Stripe::Charge.create(
         :amount => 999, # amount in cents, again
         :currency => "usd",
         :source => token,
