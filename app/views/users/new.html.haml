@@ -10,4 +10,4 @@
           = f.email_field :email
           = f.password_field :password
         %fieldset.actions.control-group.col-sm-offset-2
-          = f.submit "Sign Up"
+          %script(src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="#{ENV['STRIPE_TEST_PUBLISHABLE']}" data-name="Rickflix" data-description="Join Rickflix for just $9.99 per month" data-amount="999")

@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @invitation = Invitation.find_by(token: params[:user][:friend_token])
-    if @user.save
+    if @user.valid?
+      process_payment(params[:stripeToken])
+      @user.save
       create_relationship unless @invitation.nil?
       flash[:success] = "Your account has been created."
       session[:user_id] = @user.id
@@ -38,5 +40,21 @@ class UsersController < ApplicationController
     leader = User.find(@invitation.user_id)
     Relationship.create(leader: leader, follower: @user)
     Relationship.create(leader: @user, follower: leader)
+  end
+
+  def process_payment(token)
+    Stripe.api_key = ENV['STRIPE_TEST_SECRET']
+
+    begin
+      charge = Stripe::Charge.create(
+        :amount => 999, # amount in cents, again
+        :currency => "usd",
+        :source => token,
+        :description => "Thank you for joining Rickflix"
+      )
+    rescue Stripe::CardError => e
+      flash[:danger] = e.message
+      render :new
+    end
   end
 end

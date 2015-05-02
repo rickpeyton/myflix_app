@@ -16,6 +16,7 @@ gem 'sidekiq'
 gem 'carrierwave'
 gem 'carrierwave-aws'
 gem "mini_magick"
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 group :development do
   gem "better_errors"
@@ -27,6 +28,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'rspec-rails', '2.99'
+  gem 'dotenv-rails'
 end
 
 group :test do
