@@ -5,7 +5,11 @@ module Features
       fill_in 'Name', with: name
       fill_in 'Email', with: email
       fill_in 'Password', with: password
-      click_button('checkout_with_stripe')
+      fill_in 'Credit-Card-Number', with: '4242424242424242'
+      fill_in 'Security-Code', with: '333'
+      select('5', :from => 'select_month')
+      select('2019', :from => 'select_year')
+      click_button 'Sign Up'
     end
 
     def sign_in

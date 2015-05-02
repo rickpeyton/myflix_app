@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         :amount => 999, # amount in cents, again
         :currency => "usd",
         :source => token,
-        :description => "Thank you for joining Rickflix"
+        :description => "Thank you for joining Rickflix #{@user.email}"
       )
     rescue Stripe::CardError => e
       flash[:danger] = e.message
