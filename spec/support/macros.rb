@@ -20,3 +20,18 @@ def generate_token
 
   token.id
 end
+
+def generate_decline_token
+  Stripe.api_key = ENV['STRIPE_TEST_SECRET']
+
+  token = Stripe::Token.create(
+    :card => {
+      :number => "4000000000000002",
+      :exp_month => 5,
+      :exp_year => 2016,
+      :cvc => "314"
+    },
+  )
+
+  token.id
+end

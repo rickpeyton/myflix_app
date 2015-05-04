@@ -131,6 +131,13 @@ describe UsersController do
         expect(assigns(:user)).to be_an_instance_of(User)
       end
     end
+
+    context "with invalid credit card" do
+      it "sets the deline error message" do
+        post :create, user: Fabricate.attributes_for(:user), stripeToken: generate_decline_token
+        expect(flash[:danger]).to eq "Your card was declined."
+      end
+    end
   end
 
 end

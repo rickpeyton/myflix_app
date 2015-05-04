@@ -1,10 +1,11 @@
 require 'spec_helper'
 
 feature 'Visitor signs up' do
+  require 'database_cleaner'
+  DatabaseCleaner.clean_with :truncation
+  DatabaseCleaner.strategy = :transaction
+
   scenario 'with valid email and password', js: true do
-    require 'database_cleaner'
-    require 'database_cleaner/cucumber'
-    DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.start
     sign_up_with 'John Doe', 'valid@example.com', 'password'
 

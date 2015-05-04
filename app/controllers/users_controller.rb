@@ -17,13 +17,22 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     @invitation = Invitation.find_by(token: params[:user][:friend_token])
     if @user.valid?
-      process_payment(params[:stripeToken])
-      @user.save
-      create_relationship unless @invitation.nil?
-      flash[:success] = "Your account has been created."
-      session[:user_id] = @user.id
-      RegisterMailer.welcome_email(@user).deliver
-      redirect_to home_path
+      charge = StripeWrapper::Charge.create(
+        amount: 999,
+        token: params[:stripeToken],
+        description: "Thank you for joining Rickflix #{@user.email}"
+      )
+      if charge.successfull?
+        @user.save
+        create_relationship unless @invitation.nil?
+        flash[:success] = "Your account has been created."
+        session[:user_id] = @user.id
+        RegisterMailer.welcome_email(@user).deliver
+        redirect_to home_path
+      else
+        flash[:danger] = charge.error_message
+        render :new
+      end
     else
       flash[:danger] = "Something went wrong."
       render :new
@@ -42,19 +51,4 @@ class UsersController < ApplicationController
     Relationship.create(leader: @user, follower: leader)
   end
 
-  def process_payment(token)
-    Stripe.api_key = ENV['STRIPE_TEST_SECRET']
-
-    begin
-      Stripe::Charge.create(
-        :amount => 999, # amount in cents, again
-        :currency => "usd",
-        :source => token,
-        :description => "Thank you for joining Rickflix #{@user.email}"
-      )
-    rescue Stripe::CardError => e
-      flash[:danger] = e.message
-      render :new
-    end
-  end
 end
