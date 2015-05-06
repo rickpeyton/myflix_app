@@ -43,7 +43,8 @@ describe UsersController do
   describe "POST #create" do
     context "with valid input" do
       before do
-        post :create, user: Fabricate.attributes_for(:user), stripeToken: generate_token
+        allow(StripeWrapper::Charge).to receive(:create)
+        post :create, user: Fabricate.attributes_for(:user)
       end
 
       it "creates the user" do
@@ -60,25 +61,33 @@ describe UsersController do
     end
 
     context "with a valid token" do
+      before do
+        allow(StripeWrapper::Charge).to receive(:create)
+      end
+
       it "creates a relationship between invitee and invitor" do
         alice = Fabricate(:user)
         invite = Fabricate(:invitation, user_id: alice.id)
-        post :create, user: Fabricate.attributes_for(:user, friend_token: invite.token), stripeToken: generate_token
-        expect(Relationship.where(["leader_id = ? and follower_id = ?", alice.id, User.last.id]).count).to eq(1)
+        post :create,
+          user: Fabricate.attributes_for(:user,friend_token: invite.token)
+        expect(Relationship.where(["leader_id = ? and follower_id = ?",
+                                   alice.id, User.last.id]).count).to eq(1)
       end
 
       it "creates a relationship between invitor and invitee" do
         alice = Fabricate(:user)
         invite = Fabricate(:invitation, user_id: alice.id)
-        post :create, user: Fabricate.attributes_for(:user, friend_token: invite.token), stripeToken: generate_token
-        expect(Relationship.where(["leader_id = ? and follower_id = ?", User.last.id, alice.id]).count).to eq(1)
+        post :create,
+          user: Fabricate.attributes_for(:user,friend_token: invite.token)
+        expect(Relationship.where(["leader_id = ? and follower_id = ?",
+                                   User.last.id, alice.id]).count).to eq(1)
       end
-
     end
 
     context "email sending with valid inputs" do
       before do
-        post :create, user: Fabricate.attributes_for(:user), stripeToken: generate_token
+        allow(StripeWrapper::Charge).to receive(:create)
+        post :create, user: Fabricate.attributes_for(:user)
       end
 
       after do
@@ -132,12 +141,12 @@ describe UsersController do
       end
     end
 
-    context "with invalid credit card" do
-      it "sets the deline error message" do
-        post :create, user: Fabricate.attributes_for(:user), stripeToken: generate_decline_token
-        expect(flash[:danger]).to eq "Your card was declined."
-      end
-    end
+#     context "with invalid credit card" do
+#       it "sets the deline error message" do
+#         post :create, user: Fabricate.attributes_for(:user), stripeToken: generate_decline_token
+#         expect(flash[:danger]).to eq "Your card was declined."
+#       end
+#     end
   end
 
 end

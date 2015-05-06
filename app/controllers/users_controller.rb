@@ -16,23 +16,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @invitation = Invitation.find_by(token: params[:user][:friend_token])
-    if @user.valid?
-      charge = StripeWrapper::Charge.create(
+    if @user.save
+    StripeWrapper::Charge.create(
         amount: 999,
-        token: params[:stripeToken],
+        source: params[:stripeToken],
         description: "Thank you for joining Rickflix #{@user.email}"
       )
-      if charge.successfull?
-        @user.save
-        create_relationship unless @invitation.nil?
-        flash[:success] = "Your account has been created."
-        session[:user_id] = @user.id
-        RegisterMailer.welcome_email(@user).deliver
-        redirect_to home_path
-      else
-        flash[:danger] = charge.error_message
-        render :new
-      end
+      create_relationship unless @invitation.nil?
+      flash[:success] = "Your account has been created."
+      session[:user_id] = @user.id
+      RegisterMailer.welcome_email(@user).deliver
+      redirect_to home_path
     else
       flash[:danger] = "Something went wrong."
       render :new

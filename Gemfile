@@ -38,9 +38,9 @@ group :test do
   gem 'faker', '~> 1.4.3'
   gem 'capybara', '~> 2.4.4'
   gem 'capybara-email'
-  gem 'capybara-webkit'
   gem 'vcr'
   gem 'webmock'
+  gem 'selenium-webdriver'
 end
 
 group :production do
