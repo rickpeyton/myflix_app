@@ -31,11 +31,11 @@ feature "User Registers via Invite" do
     click_button "Sign Up"
     click_link "People"
     expect(page).to have_content "John Doe"
-#
-#    sign_out
-#    sign_in
-#
-#    click_link "People"
-#    expect(page).to have_content "Jane Doe"
+
+    sign_out
+    sign_in
+
+    click_link "People"
+    expect(page).to have_content "Jane Doe"
   end
 end

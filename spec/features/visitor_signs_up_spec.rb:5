@@ -1,0 +1,158 @@
+[Cassette: 'Visitor signs up/with valid email and password'] Initialized with options: {:record=>:once, :match_requests_on=>[:method, :uri], :allow_unused_http_interactions=>true, :serialize_with=>:yaml, :persist_with=>:file_system}
+[webmock] Handling request: [get http://127.0.0.1:52662/__identify__] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:52662/__identify__]
+[webmock] Handling request: [get http://127.0.0.1:52662/__identify__] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:52662/__identify__]
+[webmock] Handling request: [get http://127.0.0.1:52662/__identify__] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:52662/__identify__]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/url] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/url]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/enabled]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/name] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/name]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/attribute/type] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/attribute/type]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/attribute/readonly] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/attribute/readonly]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/value] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B684085e0-df04-c540-a34a-88a96053f59b%7D/value]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/enabled]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/name] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/name]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/attribute/type] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/attribute/type]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/attribute/readonly] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/attribute/readonly]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/value] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bac819f57-7346-ef40-9740-8f33f2f489b3%7D/value]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/enabled]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/name] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/name]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/attribute/type] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/attribute/type]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/attribute/readonly] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/attribute/readonly]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/value] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B1407e323-dc10-5c42-8677-2c9ae2e258b7%7D/value]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/enabled]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/name] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/name]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/attribute/type] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/attribute/type]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/attribute/readonly] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/attribute/readonly]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/value] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B19eaea45-4c00-0f44-ae38-2adc78ea3c65%7D/value]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/enabled]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/name] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/name]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/attribute/type] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/attribute/type]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/attribute/readonly] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/attribute/readonly]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/execute]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/value] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B4ae496d8-2ee6-2b4e-b803-1993f3d7f94d%7D/value]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B596d8f7b-0b43-3547-b2b7-eca35b6e7518%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B596d8f7b-0b43-3547-b2b7-eca35b6e7518%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B596d8f7b-0b43-3547-b2b7-eca35b6e7518%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B596d8f7b-0b43-3547-b2b7-eca35b6e7518%7D/enabled]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B596d8f7b-0b43-3547-b2b7-eca35b6e7518%7D/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B596d8f7b-0b43-3547-b2b7-eca35b6e7518%7D/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B9c246e92-ebbb-0f49-8335-f8c8b6dd3de5%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B9c246e92-ebbb-0f49-8335-f8c8b6dd3de5%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B9c246e92-ebbb-0f49-8335-f8c8b6dd3de5%7D/selected] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B9c246e92-ebbb-0f49-8335-f8c8b6dd3de5%7D/selected]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B26c0d1f5-5561-7642-b217-1f9a19db2089%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B26c0d1f5-5561-7642-b217-1f9a19db2089%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B26c0d1f5-5561-7642-b217-1f9a19db2089%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B26c0d1f5-5561-7642-b217-1f9a19db2089%7D/enabled]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B26c0d1f5-5561-7642-b217-1f9a19db2089%7D/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B26c0d1f5-5561-7642-b217-1f9a19db2089%7D/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B0ca73214-b560-5040-9c7c-94a543ca00cf%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B0ca73214-b560-5040-9c7c-94a543ca00cf%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B0ca73214-b560-5040-9c7c-94a543ca00cf%7D/selected] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B0ca73214-b560-5040-9c7c-94a543ca00cf%7D/selected]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B0ca73214-b560-5040-9c7c-94a543ca00cf%7D/click] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B0ca73214-b560-5040-9c7c-94a543ca00cf%7D/click]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B66f869bf-2380-a446-9929-3c10b979a851%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B66f869bf-2380-a446-9929-3c10b979a851%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B66f869bf-2380-a446-9929-3c10b979a851%7D/enabled] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B66f869bf-2380-a446-9929-3c10b979a851%7D/enabled]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B66f869bf-2380-a446-9929-3c10b979a851%7D/click] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B66f869bf-2380-a446-9929-3c10b979a851%7D/click]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/text] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/text]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/text] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7B2ea9e711-52d2-4941-96f4-41bf308bada0%7D/text]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [post https://api.stripe.com/v1/charges] (disabled: false)
+  [Cassette: 'Visitor signs up/with valid email and password'] Initialized HTTPInteractionList with request matchers [:method, :uri] and 1 interaction(s): { [post https://api.stripe.com/v1/charges] => [200 "{\n  \"id\": \"ch_1608y3Bqa7wW343mGFxYmnj1\",\n  \"object\": \"charge\",\n  \"created\": 1431"] }
+  [Cassette: 'Visitor signs up/with valid email and password'] Checking if [post https://api.stripe.com/v1/charges] matches [post https://api.stripe.com/v1/charges] using [:method, :uri]
+    [Cassette: 'Visitor signs up/with valid email and password'] method (matched): current request [post https://api.stripe.com/v1/charges] vs [post https://api.stripe.com/v1/charges]
+    [Cassette: 'Visitor signs up/with valid email and password'] uri (matched): current request [post https://api.stripe.com/v1/charges] vs [post https://api.stripe.com/v1/charges]
+  [Cassette: 'Visitor signs up/with valid email and password'] Found matching interaction for [post https://api.stripe.com/v1/charges] at index 0: [200 "{\n  \"id\": \"ch_1608y3Bqa7wW343mGFxYmnj1\",\n  \"object\": \"charge\",\n  \"created\": 1431"]
+[webmock] Identified request type (stubbed_by_vcr) for [post https://api.stripe.com/v1/charges]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bff5243b8-5e83-a74c-a348-55a3d9d46571%7D/displayed] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bff5243b8-5e83-a74c-a348-55a3d9d46571%7D/displayed]
+[webmock] Handling request: [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bff5243b8-5e83-a74c-a348-55a3d9d46571%7D/text] (disabled: false)
+[webmock] Identified request type (ignored) for [get http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/element/%7Bff5243b8-5e83-a74c-a348-55a3d9d46571%7D/text]
+[webmock] Handling request: [delete http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/cookie] (disabled: false)
+[webmock] Identified request type (ignored) for [delete http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/cookie]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/url] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/url]
+[webmock] Handling request: [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements] (disabled: false)
+[webmock] Identified request type (ignored) for [post http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01/elements]
+[webmock] Handling request: [delete http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01] (disabled: false)
+[webmock] Identified request type (ignored) for [delete http://127.0.0.1:7055/hub/session/f9d73f00-e641-d949-b605-1608aebfbc01]

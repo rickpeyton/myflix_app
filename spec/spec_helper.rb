@@ -21,9 +21,11 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |c|
+  c.ignore_hosts '127.0.0.1', 'localhost'
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into :webmock
   c.configure_rspec_metadata!
+  c.debug_logger = File.open(ARGV.first, 'w')
 end
 
 RSpec.configure do |config|
