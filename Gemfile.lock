@@ -100,6 +100,11 @@ GEM
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
       dotenv (= 2.0.1)
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
     erubis (2.7.0)
     execjs (2.3.0)
     fabrication (2.12.2)
@@ -184,6 +189,7 @@ GEM
     redis (3.2.1)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
+    request_store (1.1.0)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
@@ -282,6 +288,7 @@ DEPENDENCIES
   coffee-rails
   database_cleaner (= 1.2.0)
   dotenv-rails
+  draper
   fabrication (~> 2.12.2)
   faker (~> 1.4.3)
   haml-rails
