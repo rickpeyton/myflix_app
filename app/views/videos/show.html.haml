@@ -7,7 +7,7 @@
         %header
           %h3
             = @video.title
-          %span Rating: #{@video.average_rating}/5.0
+          %span= @video.rating
         %p
           = @video.description
         .actions
