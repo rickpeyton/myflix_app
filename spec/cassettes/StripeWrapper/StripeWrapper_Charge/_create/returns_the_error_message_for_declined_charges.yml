@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/tokens
     body:
       encoding: US-ASCII
-      string: card[number]=4242424242424242&card[exp_month]=5&card[exp_year]=2019&card[cvc]=314
+      string: card[number]=4000000000000002&card[exp_month]=5&card[exp_year]=2019&card[cvc]=314
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -31,7 +31,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sat, 09 May 2015 17:13:39 GMT
+      - Sat, 09 May 2015 17:19:02 GMT
       Content-Type:
       - application/json
       Content-Length:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_zaVbRvUzcXjZWyZX
+      - req_vleF11jm95G4QPZV
       Stripe-Version:
       - '2015-04-07'
       Strict-Transport-Security:
@@ -58,21 +58,21 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "tok_160bWBBqa7wW343mw192855W",
+          "id": "tok_160bbOBqa7wW343mgKznaXqN",
           "livemode": false,
-          "created": 1431191619,
+          "created": 1431191942,
           "used": false,
           "object": "token",
           "type": "card",
           "card": {
-            "id": "card_160bWABqa7wW343mkHOqYPcN",
+            "id": "card_160bbOBqa7wW343mnb1Rbn1V",
             "object": "card",
-            "last4": "4242",
+            "last4": "0002",
             "brand": "Visa",
             "funding": "credit",
             "exp_month": 5,
             "exp_year": 2019,
-            "fingerprint": "f7lTnKnFL3fT6hHF",
+            "fingerprint": "h3AUk1B04EY6np0K",
             "country": "US",
             "name": null,
             "address_line1": null,
@@ -90,13 +90,13 @@ http_interactions:
           "client_ip": "68.119.77.69"
         }
     http_version: 
-  recorded_at: Sat, 09 May 2015 17:13:38 GMT
+  recorded_at: Sat, 09 May 2015 17:19:02 GMT
 - request:
     method: post
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&source=tok_160bWBBqa7wW343mw192855W&description=Stripe%20Wrapper%20Model%20Test%20Charge
+      string: amount=999&currency=usd&source=tok_160bbOBqa7wW343mgKznaXqN&description=Stripe%20Wrapper%20Model%20Decline%20Test
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -113,20 +113,20 @@ http_interactions:
         Ricks-MacBook-Air.local 14.3.0 Darwin Kernel Version 14.3.0: Mon Mar 23 11:59:05
         PDT 2015; root:xnu-2782.20.48~5/RELEASE_X86_64 x86_64","hostname":"Ricks-MacBook-Air.local"}'
       Content-Length:
-      - '112'
+      - '113'
   response:
     status:
-      code: 200
-      message: OK
+      code: 402
+      message: Payment Required
     headers:
       Server:
       - nginx
       Date:
-      - Sat, 09 May 2015 17:13:39 GMT
+      - Sat, 09 May 2015 17:19:03 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1397'
+      - '162'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -140,72 +140,20 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_VSF7yLBcjZcUqV3r
+      - req_L860iB8V0MGYsoLr
       Stripe-Version:
       - '2015-04-07'
-      Strict-Transport-Security:
-      - max-age=31556926; includeSubDomains
     body:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_160bWBBqa7wW343m3gf9oWsa",
-          "object": "charge",
-          "created": 1431191619,
-          "livemode": false,
-          "paid": true,
-          "status": "succeeded",
-          "amount": 999,
-          "currency": "usd",
-          "refunded": false,
-          "source": {
-            "id": "card_160bWABqa7wW343mkHOqYPcN",
-            "object": "card",
-            "last4": "4242",
-            "brand": "Visa",
-            "funding": "credit",
-            "exp_month": 5,
-            "exp_year": 2019,
-            "fingerprint": "f7lTnKnFL3fT6hHF",
-            "country": "US",
-            "name": null,
-            "address_line1": null,
-            "address_line2": null,
-            "address_city": null,
-            "address_state": null,
-            "address_zip": null,
-            "address_country": null,
-            "cvc_check": "pass",
-            "address_line1_check": null,
-            "address_zip_check": null,
-            "dynamic_last4": null,
-            "metadata": {},
-            "customer": null
-          },
-          "captured": true,
-          "balance_transaction": "txn_160bWBBqa7wW343m56D6nriO",
-          "failure_message": null,
-          "failure_code": null,
-          "amount_refunded": 0,
-          "customer": null,
-          "invoice": null,
-          "description": "Stripe Wrapper Model Test Charge",
-          "dispute": null,
-          "metadata": {},
-          "statement_descriptor": null,
-          "fraud_details": {},
-          "receipt_email": null,
-          "receipt_number": null,
-          "shipping": null,
-          "application_fee": null,
-          "refunds": {
-            "object": "list",
-            "total_count": 0,
-            "has_more": false,
-            "url": "/v1/charges/ch_160bWBBqa7wW343m3gf9oWsa/refunds",
-            "data": []
+          "error": {
+            "message": "Your card was declined.",
+            "type": "card_error",
+            "code": "card_declined",
+            "charge": "ch_160bbPBqa7wW343mdY7Uavtu"
           }
         }
     http_version: 
-  recorded_at: Sat, 09 May 2015 17:13:39 GMT
+  recorded_at: Sat, 09 May 2015 17:19:02 GMT
 recorded_with: VCR 2.9.3

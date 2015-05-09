@@ -7,8 +7,6 @@ def set_current_admin(admin = nil)
 end
 
 def generate_token
-  Stripe.api_key = ENV['STRIPE_TEST_SECRET']
-
   token = Stripe::Token.create(
     :card => {
       :number => "4242424242424242",
@@ -22,8 +20,6 @@ def generate_token
 end
 
 def generate_decline_token
-  Stripe.api_key = ENV['STRIPE_TEST_SECRET']
-
   token = Stripe::Token.create(
     :card => {
       :number => "4000000000000002",
