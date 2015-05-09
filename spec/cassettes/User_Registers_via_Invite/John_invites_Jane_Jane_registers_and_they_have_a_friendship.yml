@@ -5,7 +5,7 @@ http_interactions:
     uri: https://api.stripe.com/v1/charges
     body:
       encoding: US-ASCII
-      string: amount=999&currency=usd&source=tok_160YPIBqa7wW343m4EioOU4P&description=Thank%20you%20for%20joining%20Rickflix%20valid%40example.com
+      string: amount=999&currency=usd&source=tok_160YQXBqa7wW343m2KuWzqSd&description=Thank%20you%20for%20joining%20Rickflix%20jane%40doe.com
     headers:
       Accept:
       - "*/*; q=0.5, application/xml"
@@ -22,7 +22,7 @@ http_interactions:
         Ricks-MacBook-Air.local 14.3.0 Darwin Kernel Version 14.3.0: Mon Mar 23 11:59:05
         PDT 2015; root:xnu-2782.20.48~5/RELEASE_X86_64 x86_64","hostname":"Ricks-MacBook-Air.local"}'
       Content-Length:
-      - '132'
+      - '127'
   response:
     status:
       code: 200
@@ -31,11 +31,11 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Sat, 09 May 2015 13:54:20 GMT
+      - Sat, 09 May 2015 13:55:38 GMT
       Content-Type:
       - application/json
       Content-Length:
-      - '1413'
+      - '1408'
       Connection:
       - keep-alive
       Access-Control-Allow-Credentials:
@@ -49,7 +49,7 @@ http_interactions:
       Cache-Control:
       - no-cache, no-store
       Request-Id:
-      - req_jLvIkhyT7QxaQc54
+      - req_dOAaMFmWe3Jx78dw
       Stripe-Version:
       - '2015-04-07'
       Strict-Transport-Security:
@@ -58,9 +58,9 @@ http_interactions:
       encoding: UTF-8
       string: |
         {
-          "id": "ch_160YPIBqa7wW343mr5vfwaIo",
+          "id": "ch_160YQXBqa7wW343mRZ2ApSQY",
           "object": "charge",
-          "created": 1431179660,
+          "created": 1431179737,
           "livemode": false,
           "paid": true,
           "status": "succeeded",
@@ -68,7 +68,7 @@ http_interactions:
           "currency": "usd",
           "refunded": false,
           "source": {
-            "id": "card_160YPIBqa7wW343mdloR9of8",
+            "id": "card_160YQXBqa7wW343md8JtvbjZ",
             "object": "card",
             "last4": "4242",
             "brand": "Visa",
@@ -92,13 +92,13 @@ http_interactions:
             "customer": null
           },
           "captured": true,
-          "balance_transaction": "txn_160YPIBqa7wW343mWojZD1dn",
+          "balance_transaction": "txn_160YQYBqa7wW343mBMc8fsp6",
           "failure_message": null,
           "failure_code": null,
           "amount_refunded": 0,
           "customer": null,
           "invoice": null,
-          "description": "Thank you for joining Rickflix valid@example.com",
+          "description": "Thank you for joining Rickflix jane@doe.com",
           "dispute": null,
           "metadata": {},
           "statement_descriptor": null,
@@ -111,10 +111,10 @@ http_interactions:
             "object": "list",
             "total_count": 0,
             "has_more": false,
-            "url": "/v1/charges/ch_160YPIBqa7wW343mr5vfwaIo/refunds",
+            "url": "/v1/charges/ch_160YQXBqa7wW343mRZ2ApSQY/refunds",
             "data": []
           }
         }
     http_version: 
-  recorded_at: Sat, 09 May 2015 13:54:21 GMT
+  recorded_at: Sat, 09 May 2015 13:55:38 GMT
 recorded_with: VCR 2.9.3

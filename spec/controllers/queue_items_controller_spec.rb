@@ -194,7 +194,7 @@ describe QueueItemsController do
           queue_items: [
             {id: "#{queue_item1.id}", position: "3"},
             {id: "#{queue_item2.id}", position: "2.5"}]
-        expect(queue_item1.reload.position).to eq(1)
+        expect(QueueItem.first.position).to eq 1
       end
     end
 
