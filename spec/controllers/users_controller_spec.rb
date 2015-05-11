@@ -41,90 +41,40 @@ describe UsersController do
   end
 
   describe "POST #create" do
-    context "with valid input" do
+    context "successful user signup" do
       before do
+        result = double(:sign_up_result, successful?: true)
+        allow_any_instance_of(UserSignup).to receive(:sign_up).and_return(result)
         post :create, user: Fabricate.attributes_for(:user)
-      end
-
-      it "creates the user" do
-        expect(User.count).to eq(1)
       end
 
       it "redirects to the home_path" do
         expect(response).to redirect_to home_path
       end
 
-      it "sets the user into the session" do
-        expect(session[:user_id]).to eq(User.first.id)
+      # it "sets the user into the session" do
+      #   expect(session[:user_id]).to eq(User.first.id)
+      # end
+
+      it "sets the flash success message" do
+        expect(flash[:success]).to be_present
       end
     end
 
-    context "with a valid token" do
-      it "creates a relationship between invitee and invitor" do
-        alice = Fabricate(:user)
-        invite = Fabricate(:invitation, user_id: alice.id)
-        post :create, user: Fabricate.attributes_for(:user, friend_token: invite.token)
-        expect(Relationship.where(["leader_id = ? and follower_id = ?", alice.id, User.last.id]).count).to eq(1)
-      end
-
-      it "creates a relationship between invitor and invitee" do
-        alice = Fabricate(:user)
-        invite = Fabricate(:invitation, user_id: alice.id)
-        post :create, user: Fabricate.attributes_for(:user, friend_token: invite.token)
-        expect(Relationship.where(["leader_id = ? and follower_id = ?", User.last.id, alice.id]).count).to eq(1)
-      end
-
-    end
-
-    context "email sending with valid inputs" do
+    context "failed user signup" do
       before do
+        result = double(:sign_up_result, successful?: false,
+                       error_message: "An error message")
+        allow_any_instance_of(UserSignup).to receive(:sign_up).and_return(result)
         post :create, user: Fabricate.attributes_for(:user)
-      end
-
-      after do
-        ActionMailer::Base.deliveries.clear
-      end
-
-      it "sends the email" do
-        expect(ActionMailer::Base.deliveries).to_not be_empty
-      end
-
-      it "sends to the right recipient" do
-        email = ActionMailer::Base.deliveries.last
-        expect(email.to).to eq([User.first.email])
-      end
-
-      it "contains the correct message" do
-        email = ActionMailer::Base.deliveries.last
-        expect(email.body).to include("Welcome to MyFlix")
-      end
-
-    end
-
-    context "do not send email with invalid inputs" do
-      before do
-        ActionMailer::Base.deliveries.clear
-      end
-
-      it "should not send an email" do
-        post :create, user: Fabricate.attributes_for(:user, password: "pass")
-        expect(ActionMailer::Base.deliveries).to be_empty
-        ActionMailer::Base.deliveries.clear
-      end
-    end
-
-    context "with invalid input" do
-      before do
-        post :create, user: Fabricate.attributes_for(:user,
-                                                     password: nil)
-      end
-
-      it "does not create the user" do
-        expect(User.count).to eq(0)
       end
 
       it "renders the new template" do
         expect(response).to render_template :new
+      end
+
+      it "sets the flash danger message" do
+        expect(flash[:danger]).to be_present
       end
 
       it "sets the user variable" do
@@ -132,5 +82,4 @@ describe UsersController do
       end
     end
   end
-
 end

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 feature 'Visitor signs up' do
-  scenario 'with valid email and password' do
-    sign_up_with 'John Doe', 'valid@example.com', 'password'
 
+  scenario 'with valid email and password', { js: true, vcr: true } do
+    sign_up_with("John Doe", "valid@example.com", "password")
     expect(page).to have_content('Your account has been created')
   end
 

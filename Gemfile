@@ -13,6 +13,11 @@ gem 'pg'
 gem 'bcrypt'
 gem 'bootstrap_form'
 gem 'sidekiq'
+gem 'carrierwave'
+gem 'carrierwave-aws'
+gem "mini_magick"
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'draper'
 
 group :development do
   gem "better_errors"
@@ -24,6 +29,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-nav'
   gem 'rspec-rails', '2.99'
+  gem 'dotenv-rails'
 end
 
 group :test do
@@ -33,6 +39,9 @@ group :test do
   gem 'faker', '~> 1.4.3'
   gem 'capybara', '~> 2.4.4'
   gem 'capybara-email'
+  gem 'vcr'
+  gem 'webmock'
+  gem 'selenium-webdriver'
 end
 
 group :production do

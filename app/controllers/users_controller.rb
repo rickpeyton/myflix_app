@@ -15,15 +15,15 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @invitation = Invitation.find_by(token: params[:user][:friend_token])
-    if @user.save
-      create_relationship unless @invitation.nil?
+    result = UserSignup.new(@user).sign_up(
+      params[:stripeToken], params[:user][:friend_token]
+    )
+    if result.successful?
       flash[:success] = "Your account has been created."
       session[:user_id] = @user.id
-      RegisterMailer.welcome_email(@user).deliver
       redirect_to home_path
     else
-      flash[:danger] = "Something went wrong."
+      flash[:danger] = result.error_message
       render :new
     end
   end
@@ -34,9 +34,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :name)
   end
 
-  def create_relationship
-    leader = User.find(@invitation.user_id)
-    Relationship.create(leader: leader, follower: @user)
-    Relationship.create(leader: @user, follower: leader)
-  end
+
 end
