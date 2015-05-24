@@ -58,6 +58,10 @@ describe UserSignup do
       let(:customer) { double(:customer, successful?: false,
                             error_message: "Your card was declined") }
 
+      after do
+        ActionMailer::Base.deliveries.clear
+      end
+
       it "does not create a new user record" do
         expect(StripeWrapper::Customer).to receive(:create) { customer }
         UserSignup.new(Fabricate.build(:user)).sign_up("fake_stripe_token", nil)
@@ -66,6 +70,10 @@ describe UserSignup do
     end
 
     context "invalid personal info" do
+      after do
+        ActionMailer::Base.deliveries.clear
+      end
+
       it "does not create a user" do
         UserSignup.new(User.new(email: "john@example.com")).sign_up("fake_stripe_token", nil)
         expect(User.count).to eq 0
