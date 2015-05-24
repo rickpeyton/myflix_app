@@ -28,5 +28,13 @@ describe User do
   it_behaves_like "tokenable" do
     let(:object) { Fabricate(:user) }
   end
+
+  describe "deactivate!" do
+    it "deactivates an active user" do
+      alice = Fabricate(:user, active: true)
+      alice.deactivate!
+      expect(alice).not_to be_active
+    end
+  end
 end
 
