@@ -4,7 +4,7 @@ describe UserSignup do
 
   describe "#sign_up" do
     context "with valid personal info and valid card info" do
-      let(:customer) { double(successful?: true) }
+      let(:customer) { double(successful?: true, customer_token: "abcdefg") }
 
       before do
         expect(StripeWrapper::Customer).to receive(:create) { customer }
@@ -18,6 +18,12 @@ describe UserSignup do
         UserSignup.new(Fabricate.build(:user)).sign_up(
           "fake_stripe_token", nil)
         expect(User.count).to eq(1)
+      end
+
+      it "stores the customer token from Stripe" do
+        UserSignup.new(Fabricate.build(:user)).sign_up(
+          "fake_stripe_token", nil)
+        expect(User.first.customer_token).to eq("abcdefg")
       end
 
       it "creates a relationship between invitee and invitor" do

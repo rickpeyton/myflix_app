@@ -27,4 +27,5 @@ Myflix::Application.routes.draw do
   resources :passwords, only: [:show, :create, :update]
   get "/invite", to: "invitations#new"
   resources :invitations, only: [:create]
+  mount StripeEvent::Engine, at: '/stripe-events'
 end

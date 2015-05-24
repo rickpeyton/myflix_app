@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'carrierwave-aws'
 gem "mini_magick"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'stripe_event'
 gem 'draper'
 
 group :development do

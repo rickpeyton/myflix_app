@@ -13,6 +13,7 @@ class UserSignup
           source: stripe_token
         )
       if customer.successful?
+        @user.customer_token = customer.customer_token
         @user.save
         create_relationship(friend_token)
         RegisterMailer.welcome_email(@user).deliver
