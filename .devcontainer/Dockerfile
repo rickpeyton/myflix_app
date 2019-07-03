@@ -3,7 +3,9 @@
 # Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
 #-------------------------------------------------------------------------------------------------------------
 
-FROM rickpeyton/rails:ruby-2.2.1-rails-4.1.1
+FROM rickpeyton/rails:ruby-2.3.8-rails-4.2.11
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN apt-get install -y nodejs
 COPY bin/phantomjs /usr/local/bin/
 COPY Gemfile* ./
 RUN bundle install --jobs 4

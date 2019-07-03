@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.2.1'
+ruby '2.3.8'
 
 gem "unicorn"
 gem 'bootstrap-sass', '3.1.1.1'

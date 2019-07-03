@@ -106,7 +106,7 @@ GEM
     database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
-    domain_name (0.5.24)
+    domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.0.1)
     dotenv-rails (2.0.1)
@@ -140,7 +140,7 @@ GEM
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
-    http-cookie (1.0.2)
+    http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
@@ -166,7 +166,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multipart-post (2.0.0)
-    netrc (0.10.3)
+    netrc (0.11.0)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
     pg (0.18.1)
@@ -285,7 +285,7 @@ GEM
       json (>= 1.8.0)
     unf (0.1.4)
       unf_ext
-    unf_ext (0.0.7.1)
+    unf_ext (0.0.7.6)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -349,3 +349,9 @@ DEPENDENCIES
   vcr
   web-console (~> 2.0)
   webmock
+
+RUBY VERSION
+   ruby 2.4.6p354
+
+BUNDLED WITH
+   1.17.3
