@@ -4,6 +4,7 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'capybara/rspec'
 require 'capybara/email/rspec'
+require 'capybara/poltergeist'
 require 'sidekiq/testing'
 require 'vcr'
 
@@ -32,6 +33,15 @@ RSpec.configure do |config|
   # config.mock_with :rr
 
   Capybara.server_port = 52662
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(
+      app, {
+        js_errors: true,
+        phantomjs_options: ['--ignore-ssl-errors=yes', '--ssl-protocol=any'],
+      }
+    )
+  end
+  Capybara.javascript_driver = :poltergeist
 
   config.treat_symbols_as_metadata_keys_with_true_values = true
 

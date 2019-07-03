@@ -15,3 +15,4 @@ bin/
 /log/*.log
 /tmp
 .env
+.env.test

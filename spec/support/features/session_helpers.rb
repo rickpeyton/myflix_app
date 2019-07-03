@@ -8,7 +8,7 @@ module Features
       fill_in("Credit Card Number", with: "4242424242424242")
       fill_in("Security Code", with: "333")
       select "5 - May", from: "select_month"
-      select "2019", from: "select_year"
+      select "2020", from: "select_year"
       click_button 'Sign Up'
     end
 

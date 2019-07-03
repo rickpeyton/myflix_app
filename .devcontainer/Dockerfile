@@ -4,6 +4,9 @@
 #-------------------------------------------------------------------------------------------------------------
 
 FROM rickpeyton/rails:ruby-2.2.1-rails-4.1.1
+COPY bin/phantomjs /usr/local/bin/
+COPY Gemfile* ./
+RUN bundle install --jobs 4
 
 # Install ruby-debug-ide and debase
 # RUN gem install ruby-debug-ide
