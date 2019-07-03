@@ -4,7 +4,7 @@ ruby '2.2.1'
 gem "unicorn"
 gem 'bootstrap-sass', '3.1.1.1'
 gem 'coffee-rails'
-gem 'rails', '~> 4.1.1'
+gem 'rails', '~> 4.2.0'
 gem 'haml-rails'
 gem 'sass-rails'
 gem 'uglifier'
@@ -19,11 +19,13 @@ gem "mini_magick"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'stripe_event'
 gem 'draper'
+gem 'rake', '< 11.0'
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "letter_opener"
+  gem "web-console", "~> 2.0"
 end
 
 group :development, :test do
