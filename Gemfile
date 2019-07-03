@@ -5,7 +5,7 @@ gem "unicorn"
 gem 'bootstrap-sass', '3.1.1.1'
 gem 'coffee-rails'
 gem 'rails', '~> 4.2.0'
-gem 'haml-rails'
+gem 'haml-rails', '~> 0.8'
 gem 'sass-rails'
 gem 'uglifier'
 gem 'jquery-rails', '~> 3.1.3'
