@@ -10,7 +10,7 @@ class PasswordsController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user.present?
       @user.generate_token
-      RegisterMailer.forgot_password_email(@user).deliver
+      RegisterMailer.forgot_password_email(@user).deliver_now
     end
     flash[:success] = "Password reset instructions have been send to the specified email."
     redirect_to root_path

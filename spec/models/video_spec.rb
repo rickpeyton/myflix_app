@@ -26,7 +26,7 @@ describe Video do
       dead_man = Video.create(
         title: "Dead Man Walking",
         description: "This is not Real")
-      Video.search_by_title("Futurama").should eq []
+      expect(Video.search_by_title("Futurama")).to eq []
     end
 
     it "returns an array of one for an exact match" do
@@ -36,7 +36,7 @@ describe Video do
       dead_man = Video.create(
         title: "Dead Man Walking",
         description: "This is not Real")
-      Video.search_by_title("Dead Man Walking").should eq [dead_man]
+      expect(Video.search_by_title("Dead Man Walking")).to eq [dead_man]
     end
 
     it "returns an array of one for a partial match" do
@@ -46,7 +46,7 @@ describe Video do
       dead_man = Video.create(
         title: "Dead Man Walking",
         description: "This is not Real")
-      Video.search_by_title("king Dead").should eq [walking_dead]
+      expect(Video.search_by_title("king Dead")).to eq [walking_dead]
     end
 
     it "returns an array of all matches ordered by created_at" do
@@ -57,7 +57,7 @@ describe Video do
       dead_man = Video.create(
         title: "Dead Man Walking",
         description: "This is not Real")
-      Video.search_by_title("alking").should eq [dead_man, walking_dead]
+      expect(Video.search_by_title("alking")).to eq [dead_man, walking_dead]
     end
 
     it "returns an empty array if the search string is empty" do
@@ -68,7 +68,7 @@ describe Video do
       dead_man = Video.create(
         title: "Dead Man Walking",
         description: "This is not Real")
-      Video.search_by_title("").should eq []
+      expect(Video.search_by_title("")).to eq []
     end
   end
 end
