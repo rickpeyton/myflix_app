@@ -6,6 +6,7 @@ development:
   host: host.docker.internal
   username: postgres
   password:
+  port: 9999
 
 test:
   adapter: postgresql
@@ -15,3 +16,4 @@ test:
   host: host.docker.internal
   username: postgres
   password:
+  port: 9999
