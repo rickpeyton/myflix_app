@@ -3,17 +3,15 @@ development:
   encoding: unicode
   database: myflix_development
   pool: 5
-  host: host.docker.internal
+  host: myflix-db
   username: postgres
   password:
-  port: 9999
 
 test:
   adapter: postgresql
   encoding: unicode
   database: myflix_test
   pool: 5
-  host: host.docker.internal
+  host: myflix-db
   username: postgres
   password:
-  port: 9999

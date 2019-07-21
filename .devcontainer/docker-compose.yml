@@ -1,0 +1,24 @@
+version: '3'
+services:
+  myflix-db:
+    image: postgres
+    volumes:
+      - myflix-db-vol:/var/lib/postgresql/data:delegated
+  myflix:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env.devcontainer
+    volumes:
+      - ..:/workspace:delegated
+      - ~/.gitconfig:/root/.gitconfig
+      - /var/run/docker.sock:/var/run/docker.sock
+      - myflix-gems-vol:/usr/local/bundle:delegated
+      - myflix-extensions:/root/.vscode-server:delegated
+    ports:
+      - '3000:3000'
+    command: sleep infinity
+volumes:
+  myflix-db-vol:
+  myflix-gems-vol:
+  myflix-extensions:

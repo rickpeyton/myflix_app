@@ -1,19 +1,26 @@
-// See https://aka.ms/vscode-remote/devcontainer.json for format details.
 {
-	"name": "Ruby 2",
-	"dockerFile": "Dockerfile",
-	"context": "..",
-
-	// Uncomment the next line if you want to publish any ports.
-	// "appPort": [],
-
-	// Uncomment the next line if you want to add in default container specific settings.json values
-	// "settings":  { "workbench.colorTheme": "Quiet Light" },
-
-	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "ruby --version",
-
-	"extensions": [
-		"rebornix.Ruby"
-	]
+  "name": "MyFlix",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "myflix",
+  "workspaceFolder": "/workspace",
+  "extensions": [
+    "castwide.solargraph",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "kaiwood.endwise",
+    "misogi.ruby-rubocop",
+    "mutantdino.resourcemonitor",
+    "noku.rails-run-spec-vscode",
+    "peterjausovec.vscode-docker"
+  ],
+  "settings": {
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.formatOnSaveTimeout": 2000,
+    "remote.extensionKind": {
+      "peterjausovec.vscode-docker": "workspace"
+    },
+    "solargraph.useBundler": true
+  }
 }
