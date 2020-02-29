@@ -19,7 +19,7 @@ gem "mini_magick"
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'stripe_event'
 gem 'draper'
-gem 'rake', '< 11.0'
+gem 'rake', '< 13.0'
 
 group :development do
   gem "better_errors"
